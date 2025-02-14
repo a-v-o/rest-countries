@@ -6,7 +6,7 @@ export default function Layout() {
   const [mode, setMode] = useState("");
   return (
     <div data-theme={mode}>
-      <header className="h-16 flex justify-between items-center px-8 md:px-16 w-full dark:bg-[hsl(209,_23%,_22%)] dark:text-white">
+      <header className="h-16 flex justify-between items-center px-8 md:px-16 w-full dark:bg-[hsl(209,_23%,_22%)] text-black dark:text-white">
         <div>
           <Link to={"/"}>
             <h1 className="font-bold">Where in the world?</h1>

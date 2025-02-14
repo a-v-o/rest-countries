@@ -1,8 +1,17 @@
 import { Link, useNavigate } from "react-router";
 import type { Route } from "./+types/countries";
-// import data from "rest-countries-api-with-color-theme-switcher-master/data.json";
 import { IoMdArrowBack } from "react-icons/io";
 import type { Country } from "./home";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Where in the world?" },
+    {
+      name: "description",
+      content: "An app that shows every country in the world!",
+    },
+  ];
+}
 
 export async function loader({ params }: Route.LoaderArgs) {
   const rawData = await fetch(
@@ -38,7 +47,7 @@ export default function Country({ loaderData }: Route.ComponentProps) {
     <div className="flex flex-col gap-8 px-8 md:px-16 min-h-screen pt-8">
       <button
         type="button"
-        className="self-start flex align-center items-center gap-1.5 bg-[hsl(0,_0%,_98%)] dark:bg-[hsl(209,_23%,_22%)] px-5 py-1 text-sm rounded-sm shadow-lg"
+        className="self-start flex align-center items-center gap-1.5 hover:bg-[#f4f4f4] dark:hover:bg-[hsl(207,23%,31%)] bg-[hsl(0,_0%,_98%)] dark:bg-[hsl(209,_23%,_22%)] px-5 py-1 text-sm rounded-sm shadow"
         onClick={() => {
           navigate(-1);
         }}
@@ -88,7 +97,7 @@ export default function Country({ loaderData }: Route.ComponentProps) {
 
             {newCountry.borders?.map((border) => {
               return (
-                <div className="px-3 py-1 shadow-sm bg-[hsl(0,_0%,_98%)] dark:bg-[hsl(209,_23%,_22%)] mr-2 mb-2 inline-flex rounded-md">
+                <div className="px-3 py-1 hover:bg-[#f4f4f4] dark:hover:bg-[hsl(207,23%,31%)] shadow-sm bg-[hsl(0,_0%,_98%)] dark:bg-[hsl(209,_23%,_22%)] mr-2 mb-2 inline-flex rounded-md">
                   <Link to={`/countries/${border}`}>{border} </Link>
                 </div>
               );
