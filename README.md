@@ -1,100 +1,58 @@
-# Welcome to React Router!
+# Frontend Mentor - REST Countries API with color theme switcher solution
 
-A modern, production-ready template for building full-stack React applications using React Router.
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## Table of contents
 
-## Features
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-## Getting Started
+## Overview
 
-### Installation
+### The challenge
 
-Install the dependencies:
+Users should be able to:
 
-```bash
-npm install
-```
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode _(optional)_
 
-### Development
+### Links
 
-Start the development server with HMR:
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-```bash
-npm run dev
-```
+## My process
 
-Your application will be available at `http://localhost:5173`.
+### Built with
 
-## Building for Production
+- TailwindCSS
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- React-Router
+- [React](https://reactjs.org/) - JS library
 
-Create a production build:
+### What I learned
 
-```bash
-npm run build
-```
+How to use react router's features such as data loading and form actions
 
-## Deployment
+### Useful resources
 
-### Docker Deployment
+- React router docs (https://www.reactrouter.com)
 
-This template includes three Dockerfiles optimized for different package managers:
+## Author
 
-- `Dockerfile` - for npm
-- `Dockerfile.pnpm` - for pnpm
-- `Dockerfile.bun` - for bun
-
-To build and run using Docker:
-
-```bash
-# For npm
-docker build -t my-app .
-
-# For pnpm
-docker build -f Dockerfile.pnpm -t my-app .
-
-# For bun
-docker build -f Dockerfile.bun -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+- Frontend Mentor - [@a-v-o](https://www.frontendmentor.io/profile/a-v-o)
+- Twitter - [@mellamofunmito](https://www.twitter.com/mellamofunmito)
