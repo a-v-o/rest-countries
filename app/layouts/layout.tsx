@@ -5,7 +5,7 @@ import { FaMoon, FaRegMoon } from "react-icons/fa";
 export default function Layout() {
   const [mode, setMode] = useState("");
   return (
-    <div data-theme={mode}>
+    <div data-theme={mode} className="font-nunito">
       <header className="h-16 flex justify-between items-center px-8 md:px-16 w-full dark:bg-[hsl(209,_23%,_22%)] text-black dark:text-white">
         <div>
           <Link to={"/"}>

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
 import type { Route } from "./+types/countries";
 import { IoMdArrowBack } from "react-icons/io";
-import type { Country } from "./home";
+import type { Country, CountryName } from "./home";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,18 +13,42 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+export type BorderCountry = {
+  name: CountryName;
+  cca3: string;
+};
+
 export async function loader({ params }: Route.LoaderArgs) {
-  const rawData = await fetch(
-    `https://restcountries.com/v3.1/name/${params.country}?fields=name,flags,nativeName,population,region,subregion,capital,tld,currencies,languages,borders`
+  let allCountriesArray: BorderCountry[];
+  let thisCountryArray;
+
+  const allCountries = await fetch(
+    "https://restcountries.com/v3.1/all?fields=name,cca3",
+    { cache: "no-cache" }
   );
-  let countryArray: Country[] = await rawData.json();
-  let country = countryArray[0];
-  return country;
+  const thisCountry = await fetch(
+    `https://restcountries.com/v3.1/name/${params.country}?fields=name,flags,population,region,subregion,capital,tld,currencies,languages,borders`,
+    { cache: "no-cache" }
+  );
+
+  const [allCountriesData, thisCountryData] = await Promise.all([
+    allCountries,
+    thisCountry,
+  ]);
+
+  allCountriesArray = await allCountriesData.json();
+  thisCountryArray = await thisCountryData.json();
+
+  const country: Country = thisCountryArray[0];
+  return { country, allCountriesArray };
 }
 
 export default function Country({ loaderData }: Route.ComponentProps) {
   const navigate = useNavigate();
-  const country = loaderData;
+  const { country, allCountriesArray } = loaderData;
+  const borderCountries = allCountriesArray.filter((ctry) =>
+    country.borders.includes(ctry.cca3)
+  );
 
   if (!country) {
     return <div>Country not found</div>;
@@ -94,11 +118,15 @@ export default function Country({ loaderData }: Route.ComponentProps) {
 
           <div className="text-sm mb-8">
             <p className="mr-2 inline">Border Countries: </p>
-
-            {newCountry.borders?.map((border) => {
+            {borderCountries.map((border) => {
               return (
                 <div className="px-3 py-1 hover:bg-[#f4f4f4] dark:hover:bg-[hsl(207,23%,31%)] shadow-sm bg-[hsl(0,_0%,_98%)] dark:bg-[hsl(209,_23%,_22%)] mr-2 mb-2 inline-flex rounded-md">
-                  <Link to={`/countries/${border}`}>{border} </Link>
+                  <Link
+                    key={border.name.common}
+                    to={`/countries/${border.name.common}`}
+                  >
+                    {border.name.common}{" "}
+                  </Link>
                 </div>
               );
             })}

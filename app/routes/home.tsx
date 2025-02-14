@@ -41,7 +41,8 @@ export function meta({}: Route.MetaArgs) {
 
 export async function loader({ request }: Route.LoaderArgs) {
   const rawCountryData = await fetch(
-    "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,"
+    "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,",
+    { cache: "no-cache" }
   );
   const countryData: Country[] = await rawCountryData.json();
   const url = new URL(request.url);
